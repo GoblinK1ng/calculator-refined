@@ -1,6 +1,6 @@
 body{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height:100vh;
     padding: 0px;
     margin: 0px;
@@ -10,4 +10,17 @@ body{
 
 .container{
     margin: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column; 
+}
+
+.row{
+    display: flex;
+    flex-direction: row; 
 }
