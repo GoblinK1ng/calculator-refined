@@ -41,7 +41,7 @@ nums.forEach((button) =>{
     button.addEventListener("click",()=>{
         let id = button.getAttribute("id")
         
-        if (id === '=' && oper !== null && a !== null && b !== null){
+        if (id === '=' && oper !== null && a !== "" && b !== ""){
             let answer = 0
             a = Number(a);
             b = Number(b);
@@ -50,6 +50,8 @@ nums.forEach((button) =>{
             else if (oper === '*') answer = multiply(a,b);
             else if (oper === '/') answer = divide(a,b);
             display(answer);
+            a = "", b = "", oper = null;
+        
         }
         else{
             if (operators.includes(id)) oper = id;
