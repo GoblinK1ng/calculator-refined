@@ -41,27 +41,25 @@ nums.forEach((button) =>{
     button.addEventListener("click",()=>{
         let id = button.getAttribute("id")
         
-        if (id === '=' && oper !== null && a !== "" && b !== ""){
+        if (((id === '=' || operators.includes(id)) && 
+        oper !== null && a !== "" && b !== "")){
             a = Number(a);
             b = Number(b);
-            
-            display(operate(a,b,oper));
-            a = "", b = "", oper = null;
-        
+            let answer = operate(a,b,oper)
+            display(answer);
+            console.log(a);
+            if (id === '=') a = "", b = "", oper = null;
+            else a = answer, b = "", oper = id;
         }
-        else{
-            if (operators.includes(id)) oper = id;
-                
-            else if (oper === null)a += id;
-            
-            else if (oper !== null) b += id;
 
-            
-            
+        else{
+            if (operators.includes(id)) oper = id;  
+            else if (oper === null)a += id;
+            else if (oper !== null) b += id;
             console.log(a);
             console.log(b);
             display(id);
-            console.log(id);
+            //console.log(id);
         }
     })
 })
