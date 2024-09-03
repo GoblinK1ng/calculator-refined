@@ -20,3 +20,12 @@ const operate = function(a,b, operator){
     if (operator === '*') multiply(a,b);
     if (operator === '/') divide(a,b);
 }
+
+const buttons = document.querySelector(".buttons");
+const nums = buttons.querySelectorAll(".number");
+
+nums.forEach((button) =>{
+    button.addEventListener("click",()=>{
+        console.log(button.getAttribute("id"));
+    })
+})
