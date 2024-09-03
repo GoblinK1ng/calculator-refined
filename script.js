@@ -15,10 +15,10 @@ const divide = function(a,b){
 }
 
 const operate = function(a,b, operator){
-    if (operator === '+') add(a,b);
-    if (operator === '-') subtract(a,b);
-    if (operator === '*') multiply(a,b);
-    if (operator === '/') divide(a,b);
+    if (operator === '+') return add(a,b);
+    if (operator === '-') return subtract(a,b);
+    if (operator === '*') return multiply(a,b);
+    if (operator === '/') return divide(a,b);
 }
 
 
@@ -42,14 +42,10 @@ nums.forEach((button) =>{
         let id = button.getAttribute("id")
         
         if (id === '=' && oper !== null && a !== "" && b !== ""){
-            let answer = 0
             a = Number(a);
             b = Number(b);
-            if (oper === '+') answer = add(a,b);
-            else if (oper === '-') answer = subtract(a,b);
-            else if (oper === '*') answer = multiply(a,b);
-            else if (oper === '/') answer = divide(a,b);
-            display(answer);
+            
+            display(operate(a,b,oper));
             a = "", b = "", oper = null;
         
         }
