@@ -21,11 +21,19 @@ const operate = function(a,b, operator){
     if (operator === '/') divide(a,b);
 }
 
+
+
 const buttons = document.querySelector(".buttons");
+const screen = document.querySelector("#screen");
 const nums = buttons.querySelectorAll(".number");
+
+const display = function(thing){
+    screen.textContent = thing;
+}
 
 nums.forEach((button) =>{
     button.addEventListener("click",()=>{
+        display(button.getAttribute("id"));
         console.log(button.getAttribute("id"));
     })
 })
