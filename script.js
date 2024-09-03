@@ -41,15 +41,29 @@ nums.forEach((button) =>{
     button.addEventListener("click",()=>{
         let id = button.getAttribute("id")
         
-        if (operators.includes(id)) oper = id;
+        if (id === '=' && oper !== null && a !== null && b !== null){
+            let answer = 0
+            a = Number(a);
+            b = Number(b);
+            if (oper === '+') answer = add(a,b);
+            else if (oper === '-') answer = subtract(a,b);
+            else if (oper === '*') answer = multiply(a,b);
+            else if (oper === '/') answer = divide(a,b);
+            display(answer);
+        }
+        else{
+            if (operators.includes(id)) oper = id;
+                
+            else if (oper === null)a += id;
             
-        else if (oper === null)a += id;
-         
-        else if (oper !== null) b += id;
-           
-        console.log(a);
-        console.log(b);
-        display(id);
-        console.log(id);
+            else if (oper !== null) b += id;
+
+            
+            
+            console.log(a);
+            console.log(b);
+            display(id);
+            console.log(id);
+        }
     })
 })
