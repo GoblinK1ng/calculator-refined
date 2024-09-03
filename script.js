@@ -25,15 +25,31 @@ const operate = function(a,b, operator){
 
 const buttons = document.querySelector(".buttons");
 const screen = document.querySelector("#screen");
-const nums = buttons.querySelectorAll(".number");
+const nums = buttons.querySelectorAll(".number, .sign");
+
+let a = "", b = "", oper = null;
+const operators = ['+','-','/','*'];
 
 const display = function(thing){
     screen.textContent = thing;
 }
 
+
+
+
 nums.forEach((button) =>{
     button.addEventListener("click",()=>{
-        display(button.getAttribute("id"));
-        console.log(button.getAttribute("id"));
+        let id = button.getAttribute("id")
+        
+        if (operators.includes(id)) oper = id;
+            
+        else if (oper === null)a += id;
+         
+        else if (oper !== null) b += id;
+           
+        console.log(a);
+        console.log(b);
+        display(id);
+        console.log(id);
     })
 })
