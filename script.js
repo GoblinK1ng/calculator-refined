@@ -52,10 +52,10 @@ const reset = function(){
 nums.forEach((button) =>{
     button.addEventListener("click",()=>{
         let id = button.getAttribute("id")
-        console.log(a,b,oper);
-        console.log(" ");
-        if (id === "CLR") reset();
-        if (((id === '=' || operators.includes(id)) && 
+        
+
+        if (id === "CLR") {reset(); display(id);}
+        else if (((id === '=' || operators.includes(id)) && 
         oper !== null && a !== "" && b !== "")){
             let answer = operate(a,b,oper);
             display(answer);
@@ -80,6 +80,6 @@ nums.forEach((button) =>{
             }
             
         }
-        console.log(a,b,oper);
+        
     })
 })
