@@ -17,10 +17,15 @@ const divide = function(a,b){
 const operate = function(a,b, operator){
     a = Number(a);
     b = Number(b);
-    if (operator === '+') return add(a,b);
-    if (operator === '-') return subtract(a,b);
-    if (operator === '*') return multiply(a,b);
-    if (operator === '/') return divide(a,b);
+    answer = 0;
+    if (operator === '+') answer = add(a,b);
+    if (operator === '-') answer = subtract(a,b);
+    if (operator === '*') answer = multiply(a,b);
+    if (operator === '/') answer = divide(a,b);
+    
+    if (answer.toString().length > 9)
+        answer = Number.parseFloat(answer).toExponential(2);
+    return answer;
 }
 
 
@@ -49,7 +54,7 @@ nums.forEach((button) =>{
         console.log(" ");
         if (((id === '=' || operators.includes(id)) && 
         oper !== null && a !== "" && b !== "")){
-            let answer = operate(a,b,oper)
+            let answer = operate(a,b,oper);
             display(answer);
             
             if (id === '=') reset(id);
