@@ -21,8 +21,10 @@ const operate = function(a,b, operator){
     if (operator === '+') answer = add(a,b);
     if (operator === '-') answer = subtract(a,b);
     if (operator === '*') answer = multiply(a,b);
-    if (operator === '/') answer = divide(a,b);
-    
+    if (operator === '/') {
+        if (b === 0) answer = "...";
+        else answer = divide(a,b);
+    }
     if (answer.toString().length > 9)
         answer = Number.parseFloat(answer).toExponential(2);
     return answer;
@@ -41,7 +43,7 @@ const display = function(thing){
     screen.textContent = thing;
 }
 
-const reset = function(id){
+const reset = function(){
     a = "", b = "", oper = null;
     
 }
@@ -52,17 +54,18 @@ nums.forEach((button) =>{
         let id = button.getAttribute("id")
         console.log(a,b,oper);
         console.log(" ");
+        if (id === "CLR") reset();
         if (((id === '=' || operators.includes(id)) && 
         oper !== null && a !== "" && b !== "")){
             let answer = operate(a,b,oper);
             display(answer);
             
-            if (id === '=') reset(id);
+            if (id === '=') reset();
             else a = answer, b = "", oper = id;
         }
         
         else{
-            if (id === "=") reset(id);
+            if (id === "=") reset();
             else if (operators.includes(id)) {
                 oper = id;
                 display(oper); 
