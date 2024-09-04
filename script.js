@@ -15,6 +15,8 @@ const divide = function(a,b){
 }
 
 const operate = function(a,b, operator){
+    a = Number(a);
+    b = Number(b);
     if (operator === '+') return add(a,b);
     if (operator === '-') return subtract(a,b);
     if (operator === '*') return multiply(a,b);
@@ -34,26 +36,28 @@ const display = function(thing){
     screen.textContent = thing;
 }
 
-
+const reset = function(id){
+    if (id === '=') a = "", b = "", oper = null;
+    else a = answer, b = "", oper = id;
+}
 
 
 nums.forEach((button) =>{
     button.addEventListener("click",()=>{
         let id = button.getAttribute("id")
-        
+        console.log(a,b,oper);
+        console.log(" ");
         if (((id === '=' || operators.includes(id)) && 
         oper !== null && a !== "" && b !== "")){
-            a = Number(a);
-            b = Number(b);
             let answer = operate(a,b,oper)
             display(answer);
-            console.log(a);
-            if (id === '=') a = "", b = "", oper = null;
-            else a = answer, b = "", oper = id;
+            
+            reset(id);
         }
         
         else{
-            if (operators.includes(id)) {
+            if (id === "=") reset(id);
+            else if (operators.includes(id)) {
                 oper = id;
                 display(oper); 
             } 
@@ -67,5 +71,6 @@ nums.forEach((button) =>{
             }
             
         }
+        console.log(a,b,oper);
     })
 })
