@@ -51,15 +51,21 @@ nums.forEach((button) =>{
             if (id === '=') a = "", b = "", oper = null;
             else a = answer, b = "", oper = id;
         }
-
+        
         else{
-            if (operators.includes(id)) oper = id;  
-            else if (oper === null)a += id;
-            else if (oper !== null) b += id;
-            console.log(a);
-            console.log(b);
-            display(id);
-            //console.log(id);
+            if (operators.includes(id)) {
+                oper = id;
+                display(oper); 
+            } 
+            else if (oper === null){
+                a += id;
+                display(a);
+            }
+            else if (oper !== null) {
+                b += id;
+                display(b);
+            }
+            
         }
     })
 })
