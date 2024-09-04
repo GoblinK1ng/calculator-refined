@@ -37,8 +37,8 @@ const display = function(thing){
 }
 
 const reset = function(id){
-    if (id === '=') a = "", b = "", oper = null;
-    else a = answer, b = "", oper = id;
+    a = "", b = "", oper = null;
+    
 }
 
 
@@ -52,7 +52,8 @@ nums.forEach((button) =>{
             let answer = operate(a,b,oper)
             display(answer);
             
-            reset(id);
+            if (id === '=') reset(id);
+            else a = answer, b = "", oper = id;
         }
         
         else{
