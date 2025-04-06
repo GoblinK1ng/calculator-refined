@@ -63,7 +63,7 @@ nums.forEach((button) =>{
         //Checks if CLR button is clicked, clears values and displays that it is cleared
         if (id === "CLR") {reset(); display(id);}
 
-        //Checks if = or an operator is clicked, and if its done with the proper requirements
+        //Checks if = or an operator is clicked, and if its a and b both HAVE a value
         else if (((id === '=' || operators.includes(id)) && 
         oper !== null && a !== "" && b !== "")){
 
@@ -76,6 +76,8 @@ nums.forEach((button) =>{
             else a = answer, b = "", oper = id;
         }
         
+        //If an operation/numbers was clicked, but without a and b HAVING a value
+        //This code is most of what is visually seen while doing calculations
         else{
             //checks if '=' is clicked without sufficient operands
             if (id === "=") reset();
